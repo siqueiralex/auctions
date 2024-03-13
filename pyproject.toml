@@ -1,0 +1,27 @@
+[project]
+    name = "auctions"
+    description = ""
+    authors = []
+    requires-python = ">=3.11"
+    dynamic = ["urls", "dependencies"]
+    version = "0.1.0"
+
+[build-system]
+    requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+    build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+    packages = ["auctions"]
+
+[project.optional-dependencies]
+    test = ["pytest"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements.txt"}
+
+[tool.pytest.ini_options]
+    minversion = "2.0"
+    addopts = "-rfEX -p pytester --strict-markers"
+    python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]
+    python_functions = ["test"]
+    testpaths = ["tests"]

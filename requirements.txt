@@ -1,0 +1,12 @@
+asgiref==3.7.2
+Django==5.0.3
+django-extensions==3.2.3
+django-filter==24.1
+django-simple-history==3.5.0
+dj-static==0.0.6
+djangorestframework==3.14.0
+dynaconf==3.2.4
+fontawesomefree==6.5.1
+psycopg2-binary==2.9.9
+pytz==2024.1
+sqlparse==0.4.4
