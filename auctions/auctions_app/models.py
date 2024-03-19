@@ -1,6 +1,25 @@
 from django.db import models
 
 
+class Auction(models.Model):
+    description = models.TextField(
+        null=True,
+        blank=True,
+        verbose_name="Descrição",
+    )
+    date = models.DateTimeField(
+        verbose_name="Data",
+        auto_now=False,
+    )
+    auction_category = models.ForeignKey(
+        AuctionCategory,
+        on_delete=models.DO_NOTHING,
+        verbose_name="Categoria",
+        null=True,
+        blank=True,
+    )
+
+
 class AuctionCategory(models.Model):
     description = models.CharField(
         max_length=30,
@@ -18,18 +37,7 @@ class Documents(models.Model):
     )
 
 
-class Bid(models.Model):
-    date = models.DateTimeField(
-        verbose_name="Data",
-        auto_now_add=True,
-    )
-    amount = models.DecimalField(
-        max_digits=20,
-        decimal_places=2,
-    )
-
-
-class Lots(models.Model):
+class Lot(models.Model):
     class Status(models.IntegerChoices):
         ABERTO = 1, "Lote Aberto"
         FECHADO = 2, "Lote Fechado"
@@ -48,36 +56,27 @@ class Lots(models.Model):
         blank=True,
         verbose_name="Descrição",
     )
-    bid = models.ForeignKey(
-        Bid,
+
+    auction = models.ForeignKey(
+        Auction,
         on_delete=models.DO_NOTHING,
-        null=True,
-        blank=True,
     )
 
     def __str__(self):
         return f"Lote: {self.title}"
 
 
-class Auction(models.Model):
-    description = models.TextField(
-        null=True,
-        blank=True,
-        verbose_name="Descrição",
-    )
+class Bid(models.Model):
     date = models.DateTimeField(
         verbose_name="Data",
-        auto_now=False,
+        auto_now_add=True,
     )
-    auction_category = models.ForeignKey(
-        AuctionCategory,
-        on_delete=models.DO_NOTHING,
-        verbose_name="Categoria",
-        null=True,
-        blank=True,
+    amount = models.DecimalField(
+        max_digits=20,
+        decimal_places=2,
     )
     lot = models.ForeignKey(
-        Lots,
+        Lot,
         on_delete=models.DO_NOTHING,
         null=True,
         blank=True,
