@@ -1,0 +1,38 @@
+
+body {
+  position: relative;
+  background-color: #f0f0f7;
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  min-height: 120px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    min-height: 70px;
+  }
+}
+
+footer {
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100px;
+  text-align: center;
+  padding: 10px;
+}
+
+
+

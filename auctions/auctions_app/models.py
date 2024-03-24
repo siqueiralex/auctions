@@ -18,7 +18,7 @@ class AuctionCategory(models.Model):
 
 class Documents(models.Model):
     description = models.CharField(
-        max_length="100",
+        max_length=100,
         null=True,
         blank=True,
         verbose_name="Descrição",
@@ -30,7 +30,7 @@ class Documents(models.Model):
     )
     anexo = models.FileField(
         upload_to="../uploads/",
-        max_lenght=500,
+        max_length=500,
     )
 
     def __str__(self):
@@ -65,7 +65,7 @@ class Auction(models.Model):
     class Meta:
         verbose_name_plural = "Leilões"
         verbose_name = "Leilão"
-        ordering = "date"
+        ordering = ("date",)
 
 
 class Lot(models.Model):
@@ -123,4 +123,4 @@ class Bid(models.Model):
     class Meta:
         verbose_name_plural = "Lances"
         verbose_name = "Lance"
-        ordering = "date"
+        ordering = ("date",)

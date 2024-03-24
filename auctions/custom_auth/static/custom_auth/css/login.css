@@ -2,12 +2,15 @@
     min-width:300px;
   }
 
-.login-row {
-    min-height: 500px;
+.login-block {
+    min-height: 600px;
 }
 
-.form-login {
-    min-width:270px;    
+.login-card {
+    width: 50vw;
+    max-width: 500px;
+    min-width: 350px;
+    padding-top: 30px;    
 }
 
 .invalid-feedback {
